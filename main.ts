@@ -5,7 +5,7 @@ import addContact from "./resolvers/addContact.ts";
 import getContact from "./resolvers/getContact.ts";
 import getContacts from "./resolvers/getContacts.ts";
 import updateContac from "./resolvers/updateContact.ts";
-
+import deleteContact from "./resolvers/deleteContact.ts";
 
 const env=await load()
 const MONGO_URL=env.MONGO_URL||Deno.env.get("MONGO_URL")
@@ -26,6 +26,7 @@ try {
   app.get("/getContact/:id",getContact)
   app.get("/getContacts",getContacts)
   app.put("/updateContact",updateContac)
+  app.delete("/deleteContact/:id",deleteContact)
 
   app.listen(PORT,()=> console.info ((`Te estoy escuchando desde ${PORT}`)));
 
