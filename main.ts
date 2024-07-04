@@ -4,6 +4,8 @@ import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 import addContact from "./resolvers/addContact.ts";
 import getContact from "./resolvers/getContact.ts";
 import getContacts from "./resolvers/getContacts.ts";
+import updateContac from "./resolvers/updateContact.ts";
+
 
 const env=await load()
 const MONGO_URL=env.MONGO_URL||Deno.env.get("MONGO_URL")
@@ -23,6 +25,7 @@ try {
   app.post("/addContact",addContact)
   app.get("/getContact/:id",getContact)
   app.get("/getContacts",getContacts)
+  app.put("/updateContact",updateContac)
 
   app.listen(PORT,()=> console.info ((`Te estoy escuchando desde ${PORT}`)));
 
